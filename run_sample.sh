@@ -57,7 +57,7 @@ benchmark_hgemm() {
     # done
 }
 
-nohup $WORK_PATH/output/bin/hgemm -M=512 -N=2048 -K=1024 -enable_wmma=true -enable_mma=true -warmup_iterations=1 -profiling_iterations=10 -sleep_duration=100 -enable_check=true > log/hgemm_512_2048_1024.log 2>&1 &
+nohup $WORK_PATH/output/bin/hgemm -M=2560 -N=2560 -K=2560 -enable_mma=true -warmup_iterations=1 -profiling_iterations=10 -sleep_duration=100 -enable_check=true > log/hgemm_512_2048_1024.log 2>&1 &
 # sudo ncu --set full --target-processes all --force-overwrite -o ncu/hgemm_512_2048_1024 $WORK_PATH/output/bin/hgemm -M=512 -N=2048 -K=1024 -enable_wmma=true -enable_mma=true -warmup_iterations=1 -profiling_iterations=1 -sleep_duration=100 -enable_check=false > log/ncu_hgemm_512_2048_1024.log 2>&1
 
 # benchmark_hgemm

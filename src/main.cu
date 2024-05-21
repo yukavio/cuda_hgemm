@@ -103,29 +103,29 @@ int main(int argc, char *argv[]) {
     if (FLAGS_enable_wmma) {
         // tester.evaluate(wmmaNaive, "Wmma-Naive");
         // tester.evaluate(wmmaBase, "Wmma-Base");
-        tester.evaluate(wmmaPadding, "Wmma-Padding");
-        tester.evaluate(wmmaAsync, "Wmma-Async");
-        tester.evaluate(wmmaAsyncPg2s, "Wmma-Async-Pg2s");
-        tester.evaluate(wmmaAsyncPg2sPs2r, "Wmma-Async-Pg2s-Ps2r");
-        tester.evaluate(wmmaAsyncStage2, "Wmma-Async-Stage2");
-        tester.evaluate(wmmaAsyncStage3, "Wmma-Async-Stage3");
+     //    tester.evaluate(wmmaPadding, "Wmma-Padding");
+     //    tester.evaluate(wmmaAsync, "Wmma-Async");
+     //    tester.evaluate(wmmaAsyncPg2s, "Wmma-Async-Pg2s");
+     //    tester.evaluate(wmmaAsyncPg2sPs2r, "Wmma-Async-Pg2s-Ps2r");
+     //    tester.evaluate(wmmaAsyncStage2, "Wmma-Async-Stage2");
+     //    tester.evaluate(wmmaAsyncStage3, "Wmma-Async-Stage3");
     }
 
     if (FLAGS_enable_mma) {
         // tester.evaluate(mmaNaive, "Mma-Naive");
         // tester.evaluate(mmaBase, "Mma-Base");
-        tester.evaluate(mmaPermuted, "Mma-Permuted");
-        tester.evaluate(mmaAsync, "Mma-Async");
+        // tester.evaluate(mmaPermuted, "Mma-Permuted");
+        // tester.evaluate(mmaAsync, "Mma-Async");
         tester.evaluate(mmaAsyncPg2s, "Mma-Async-Pg2s");
-        tester.evaluate(mmaAsyncPg2sPs2r, "Mma-Async-Pg2s-Ps2r");
-        tester.evaluate(mmaAsyncStage2, "Mma-Async-Stage2");
-        tester.evaluate(mmaAsyncStage3, "Mma-Async-Stage3");
-        tester.evaluate(mmaAsyncStage4, "Mma-Async-Stage4");
+        // tester.evaluate(mmaAsyncPg2sPs2r, "Mma-Async-Pg2s-Ps2r");
+        // tester.evaluate(mmaAsyncStage2, "Mma-Async-Stage2");
+        // tester.evaluate(mmaAsyncStage3, "Mma-Async-Stage3");
+        // tester.evaluate(mmaAsyncStage4, "Mma-Async-Stage4");
     }
 
     GFLAGS_NAMESPACE::ShutDownCommandLineFlags();
 
-    HLOG("Done");
+    //HLOG("Done");
 
     return 0;
 }

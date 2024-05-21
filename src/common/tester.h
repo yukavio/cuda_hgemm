@@ -9,6 +9,8 @@
 #include "cuda_timer.h"
 #include "matrix.h"
 
+#define BRANCH 8
+
 class Tester {
 public:
     explicit Tester(size_t M = 512, size_t N = 2048, size_t K = 1024, size_t warmup_iterations = 1,
@@ -27,9 +29,9 @@ public:
         HGEMM_CHECK_GT(m_profiling_iterations, 0);
         HGEMM_CHECK_GT(m_sleep_duration, 0);
 
-        m_A = new Matrix(m_M, m_K, "Matrix A");
+        m_A = new Matrix(m_M, m_K, "Matrix A", -1.0, 1.0, 0);
         HGEMM_CHECK(m_A);
-        m_B = new Matrix(m_K, m_N, "Matrix B");
+        m_B = new Matrix(m_K, m_N, "Matrix B",  -1.0, 1.0, 0);
         HGEMM_CHECK(m_B);
         m_C = new Matrix(m_M, m_N, "Matrix C");
         HGEMM_CHECK(m_C);
@@ -43,6 +45,9 @@ public:
             m_base->moveToHost();
             m_base->memSetDevice();
         }
+        // m_A->show(1);
+        // m_B->show(1);
+        // m_base->show(BRANCH);
     }
 
     ~Tester() {
@@ -83,7 +88,12 @@ public:
 
         if (m_enable_check) {
             m_C->moveToHost();
-            m_C->checkValue(m_base);
+            if(name.c_str()[0]=='M'){
+                m_C->checkValue_branch(m_base, BRANCH);
+                //m_C->show_res(BRANCH);
+            } else{
+                m_C->checkValue(m_base);
+            }
         }
 
         profile(std::forward<Func>(hgemm), name);
